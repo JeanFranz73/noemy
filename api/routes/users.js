@@ -3,7 +3,7 @@ const router = express.Router();
 const users = require('../services/users');
 
 router.get("/", async (req, res, next) => {
-    res.send(
+    res.json(
         {
             code: 0,
             desc: "Usuário não especificado"
@@ -11,13 +11,12 @@ router.get("/", async (req, res, next) => {
     );
 });
 
-router.get('/:id', async function (req, res, next) {
+router.get('/:id', async (req, res) => {
     try {
-        res.send((await users.getUser(req.params.id)).user[0]);
+        res.json(await users.getUser(req.params.id));
     } catch (err) {
         console.error(`Erro ao ler usuário: `, err.message);
-        res.status(404);
-        next(err);
+        res.status(502);
     }
 });
 
