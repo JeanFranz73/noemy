@@ -1,16 +1,9 @@
-const db = require('../helper/db');
+const {User} = require('../model/User');
 
-async function getUser(userId) {
-
-    const user = await db.querySingle(
-        `SELECT * FROM users WHERE user_id = '${userId}'`
-    );
-
-    return {
-        user
-    }
+function getUser(userId) {
+    return User.findOne({user_id: userId}).select('-_id').exec();
 }
 
 module.exports = {
     getUser
-}
+};
