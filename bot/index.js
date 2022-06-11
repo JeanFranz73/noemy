@@ -11,4 +11,4 @@ client.on('ready', async () => {
     console.log("Bot ready!");
 });
 
-client.on('message', (msg) => { commandHandler(client, msg) });
+client.on('messageCreate', (msg) => { commandHandler(client, msg) });
