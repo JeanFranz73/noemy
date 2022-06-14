@@ -5,6 +5,7 @@ const usersRouter = require("./routes/users");
 const serversRouter = require("./routes/servers");
 
 app.use(express.json());
+app.set('json spaces', 4);
 
 app.use(
     express.urlencoded({

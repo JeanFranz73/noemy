@@ -11,8 +11,10 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    
     try {
-        const server = await servers.getServer(req.params.id);
+        const server = await servers.getServer(id);
         if (!server) {
             res.status(422).json({
                 message: "Servidor não encontrado"
