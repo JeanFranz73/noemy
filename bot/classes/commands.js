@@ -1,34 +1,53 @@
 require("dotenv").config();
 
 const info = require('./info')
+const test = require('../test/test');
 
 const commands = {
-    ping: function (client, msg, args) {
-        var channel = client.channels.cache.get(msg.channel.id);
-        channel.send("pong UwU");
+    ping: function (client, interaction) {
+        interaction.reply({
+            content: "pong UwU"
+        });
     },
-    info: function (client, msg, args) {
-        info(client, msg);
+    info: function (client, interaction) {
+        info(client, interaction);
+    },
+    test: function name(client, interaction) {
+        test(client, interaction);
     }
 }
 
-module.exports = function (client, msg) {
-    let tokens = msg.content.split(" ");
-    let command = tokens.shift();
-    if (command.charAt(0) === "!") {
+function generate(cmds) {
+    cmds.create({
+        name: "ping",
+        description: "pong"
+    });
+    cmds.create({
+        name: "info",
+        description: "Mostra as informações do bot."
+    });
+    cmds.create({
+        name: "test",
+        description: "Testando funcionalidade dos btns."
+    });
+}
 
-        command = command.substring(1);
-        if (command.split(" ").length > 1) {
-            command = command.split(" ")[0];
-            command = command.replace(" ", "");
-        }
-        try {
-            commands[command](client, msg, tokens);
-        } catch (error) {
-            console.log(error);
-            var channel = client.channels.cache.get(msg.channel.id);
-            channel.send("Comando não existe!");
-        }
+module.exports = {
+    handleInteraction: function (client, interaction) {
+        const { commandName } = interaction;
 
+        commands[commandName](client, interaction);
+
+    },
+
+    createCommands: function (client) {
+        const guilds = client.guilds.cache.map(guild => guild.id);
+        guilds.forEach(guildId => {
+            const guild = client.guilds.cache.get(guildId);
+            let cmds;
+
+            cmds = (guild) ? guild.commands : client.application.commands;
+            generate(cmds);
+        });
     }
 }

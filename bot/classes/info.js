@@ -2,7 +2,7 @@ var pjson = require('../../package.json');
 const ping = require("ping");
 const Discord = require('discord.js');
 
-module.exports = (client, msg) => {
+module.exports = (client, interaction) => {
 
     const embedMsg = new Discord.MessageEmbed()
         .setColor('#' + Math.floor(Math.random() * 16777215).toString(16))
@@ -12,6 +12,7 @@ module.exports = (client, msg) => {
         .addField("Versão", pjson.version, true)
         .addField("Versão Node", process.version, true);
 
-    var channel = client.channels.cache.get(msg.channel.id);
-    channel.send({ embeds: [embedMsg] });
+    interaction.reply({
+        embeds: [embedMsg]
+    });
 }
