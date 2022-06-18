@@ -1,4 +1,4 @@
-var pjson = require('../../package.json');
+var pjson = require('../../../package.json');
 const ping = require("ping");
 const Discord = require('discord.js');
 

@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const info = require('./info')
+const info = require('./commands/info')
 const test = require('../test/test');
 
 const commands = {
