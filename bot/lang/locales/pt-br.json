@@ -1,0 +1,11 @@
+{
+    "PING": "ping em huehue",
+    "LANG_SET": "Idioma atualizado para",
+    "CMD_PING_DESCRIPTION": "pong",
+    "CMD_INFO_DESCRIPTION": "Mostra informações do Noemy.",
+    "CMD_TEST_DESCRIPTION": "Testando coisas.",
+    "CMD_LANG_DESCRIPTION": "Seleciona idioma da Noemy.",
+    "CMD_LANG_LANG_DESCRIPTION": "Idioma desejado.",
+    "CMD_HELP_DESCRIPTION": "Todos os comandos da Noemy.",
+    "CMD_HELP_CMD_DESCRIPTION": "Ajuda para um comando."
+}

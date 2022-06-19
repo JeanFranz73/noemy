@@ -27,35 +27,35 @@ const commands = {
     }
 }
 
-function generate(cmds) {
+function generate(guildId, cmds) {
     cmds.create({
         name: "ping",
-        description: "pong"
+        description: getText(guildId, "CMD_PING_DESCRIPTION")
     });
     cmds.create({
         name: "info",
-        description: "Shows bot information."
+        description: getText(guildId, "CMD_INFO_DESCRIPTION")
     });
     cmds.create({
         name: "test",
-        description: "Testing stuff."
+        description: getText(guildId, "CMD_TEST_DESCRIPTION")
     });
     cmds.create({
         name: "lang",
-        description: "Set bot language.",
+        description: getText(guildId, "CMD_LANG_DESCRIPTION"),
         options: [{
             name: "lang",
-            description: "Desired language.",
+            description: getText(guildId, "CMD_LANG_LANG_DESCRIPTION"),
             required: true,
             type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
         }]
     });
     cmds.create({
         name: "help",
-        description: "All bot commands.",
+        description: getText(guildId, "CMD_HELP_DESCRIPTION"),
         options: [{
             name: "cmd",
-            description: "Help for specific command.",
+            description: getText(guildId, "CMD_HELP_CMD_DESCRIPTION"),
             required: false,
             type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
         }]
@@ -77,7 +77,7 @@ module.exports = {
             let cmds;
 
             cmds = (guild) ? guild.commands : client.application.commands;
-            generate(cmds);
+            generate(guildId, cmds);
         });
     }
 }

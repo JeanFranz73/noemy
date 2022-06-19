@@ -1,13 +1,6 @@
 {
-    "languages": ["en-us", "pt-br"],
-    "translations": {
-        "PING": {
-            "en-us": "english ping",
-            "pt-br": "ping em huehue"
-        },
-        "LANG_SET": {
-            "en-us": "Language set to",
-            "pt-br": "Idioma atualizado para"
-        }
-    }
+    "languages": [
+        "en-us",
+        "pt-br"
+    ]
 }

@@ -1,0 +1,11 @@
+{
+    "PING": "english ping",
+    "LANG_SET": "Language set to",
+    "CMD_PING_DESCRIPTION": "pong",
+    "CMD_INFO_DESCRIPTION": "Shows Noemy information.",
+    "CMD_TEST_DESCRIPTION": "Testing stuff.",
+    "CMD_LANG_DESCRIPTION": "Set Noemy language.",
+    "CMD_LANG_LANG_DESCRIPTION": "Desired language.",
+    "CMD_HELP_DESCRIPTION": "All Noemy commands.",
+    "CMD_HELP_CMD_DESCRIPTION": "Help for specific command."
+}

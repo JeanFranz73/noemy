@@ -8,7 +8,7 @@ module.exports = async (client, interaction) => {
     const l = options.getString("lang");
     var languageIsAvaiable = false;
     await lang.languages.forEach(language => {
-        console.log (language + " == "+l);
+        console.log(language + " == " + l);
         if (language == l) {
             languageIsAvaiable = true;
         }
@@ -21,6 +21,8 @@ module.exports = async (client, interaction) => {
         axios
             .patch(process.env.API_URL + ":" + process.env.API_PORT + "/server/" + interaction.guildId, {
                 language: l
+            }, {
+                headers: { Authorization: 'Bearer ' + process.env.API_AUTH }
             })
             .then(res => {
                 loadLanguages();
