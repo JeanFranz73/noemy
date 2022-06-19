@@ -1,19 +1,25 @@
 require("dotenv").config();
-
+const DiscordJS = require('discord.js');
 const info = require('./commands/info')
 const test = require('../test/test');
+const lang = require('./commands/lang');
+const { getText } = require('../lang/language');
+
 
 const commands = {
     ping: function (client, interaction) {
         interaction.reply({
-            content: "pong UwU"
+            content: getText(interaction.guildId, "PING")
         });
     },
     info: function (client, interaction) {
         info(client, interaction);
     },
-    test: function name(client, interaction) {
+    test: function (client, interaction) {
         test(client, interaction);
+    },
+    lang: function (client, interaction) {
+        lang(client, interaction);
     }
 }
 
@@ -24,11 +30,21 @@ function generate(cmds) {
     });
     cmds.create({
         name: "info",
-        description: "Mostra as informações do bot."
+        description: "Shows bot information."
     });
     cmds.create({
         name: "test",
-        description: "Testando funcionalidade dos btns."
+        description: "Testing stuff."
+    });
+    cmds.create({
+        name: "lang",
+        description: "Set bot language.",
+        options: [{
+            name: "lang",
+            description: "Desired language.",
+            required: true,
+            type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
+        }]
     });
 }
 
