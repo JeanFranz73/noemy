@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "name": "Rodar API dev",
+            "request": "launch",
+            "command": "npm run api-dev",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Rodar bot dev",
+            "request": "launch",
+            "command": "npm run bot-dev",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

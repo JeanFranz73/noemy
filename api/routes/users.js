@@ -25,20 +25,14 @@ router.get('/:id', async (req, res) => {
     } catch (err) {
         console.error(`Erro ao selecionar usuário: `, err);
         res.status(500).json({
-            erro: err.message
+            message: "Erro ao selecionar usuário"
         });
     }
 });
 
 router.patch('/:id', async (req, res) => {
     const id = req.params.id;
-    const {exp, money, minecraft_nick} = req.body;
-
-    const user = {
-        exp,
-        money,
-        minecraft_nick
-    }
+    const user = req.body;
 
     try {
         const updatedUser = await users.updateUser(id, user);
@@ -48,10 +42,12 @@ router.patch('/:id', async (req, res) => {
             });
             return
         }
-        res.status(200).json(user)
+        res.status(200).json({
+            message: "Usuário atualizado com sucesso"
+        });
     } catch (err) {
         res.status(500).json({
-            erro: err.message
+            message: "Erro ao atualizar usuário"
         });
     }
 });
