@@ -3,6 +3,7 @@ const DiscordJS = require('discord.js');
 const info = require('./commands/info')
 const test = require('../test/test');
 const lang = require('./commands/lang');
+const help = require("./commands/help");
 const { getText } = require('../lang/language');
 
 
@@ -20,6 +21,9 @@ const commands = {
     },
     lang: function (client, interaction) {
         lang(client, interaction);
+    },
+    help: function (client, interaction) {
+        help(client, interaction);
     }
 }
 
@@ -43,6 +47,16 @@ function generate(cmds) {
             name: "lang",
             description: "Desired language.",
             required: true,
+            type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
+        }]
+    });
+    cmds.create({
+        name: "help",
+        description: "All bot commands.",
+        options: [{
+            name: "cmd",
+            description: "Help for specific command.",
+            required: false,
             type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
         }]
     });
